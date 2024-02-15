@@ -7,10 +7,7 @@ import { useState, useEffect } from 'react';
 import { login, logout } from '../reducers/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '@mui/material';
-
-
-
-//problème pour insérer balises Head entre balise title autour du titre
+import Home from './Home';
 
 
 const style = {
@@ -27,6 +24,12 @@ const style = {
 
 
 function Login() {
+
+
+  const user = useSelector((state) => state.user.value);
+  console.log(user)
+
+  const dispatch = useDispatch();
 
   const [firstname, setFirstname] = useState('');
   const [usernameSignUp, setUsernameSignUp] = useState('');
@@ -45,6 +48,7 @@ function Login() {
 
   //fonction activée lors de l'envoi du form signIn
   const handleSubmitSignIn = () => {
+    
     fetch('http://localhost:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -55,7 +59,8 @@ function Login() {
           dispatch(login({ username: usernameSignIn, token: data.token }));
           setUsernameSignIn('');
           setPasswordSignIn('');
-          window.location.replace('/main')
+          return window.location.replace('/home')
+
         }
       });
   }
@@ -73,6 +78,8 @@ function Login() {
           dispatch(login({ username: usernameSignUp, token: data.token }));
           setUsernameSignUp('');
           setPasswordSignUp('');
+          setFirstname('');
+          return window.location.replace('/home')
         }
       });
   };
