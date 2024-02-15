@@ -1,6 +1,6 @@
-import Trends from '../components/Bookmarks';
+import Trends from '../components/Trends';
 
-function BookmarksPage() {
+function HashtagPage() {
   return <Trends />;
 }
 
