@@ -1,40 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addBookmark, removeBookmark } from '../reducers/bookmarks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookmark, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import styles from '../styles/Article.module.css';
+import styles from '../styles/Tweet.module.css';
 
 function Tweet(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.value);
 
-  //continuer à partir d'ici
+  // const handleLikeClick = () => {
 
-    fetch(`http://localhost:3000/users/canBookmark/${user.token}`)
-      .then(response => response.json())
-      .then(data => {
-        if (data.result && data.canBookmark) {
-          if (props.isBookmarked) {
-            dispatch(removeBookmark(props));
-          } else {
-            dispatch(addBookmark(props));
-          }
-        }
-      });
-  }
+  //   if (!user.token) {
+  //     return;
+  //   }
+    //mettre en place route spécifique pour incrémenter les likes
+    // fetch(`http://localhost:3000/tweet/like/${user.token}`)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     if (data.result) {
+    //         dispatch(removeBookmark(props));
+    //       } else {
+    //         dispatch(addBookmark(props));
+    //       }
+    //     }
+    //   );
 
-  let iconStyle = {};
-  if (props.isBookmarked) {
-    iconStyle = { 'color': '#E9BE59' };
-  }
+  // }
 
   return (
-    <div className={styles.articles}>
-      <div className={styles.articleHeader}>
+
+    <div className={styles.tweet}>
+      <div className={styles.tweetHeader}>
         <h3>{props.title}</h3>
-        <FontAwesomeIcon onClick={() => handleBookmarkClick()} icon={faBookmark} style={iconStyle} className={styles.bookmarkIcon} />
-        {props.inBookmarks || <FontAwesomeIcon icon={faEyeSlash} onClick={() => dispatch(hideArticle(props.title))} className={styles.hideIcon} />}
+        <FontAwesomeIcon onClick={() => handleLikeClick()} icon={faHeart} style={iconStyle} className={styles.bookmarkIcon} />
       </div>
       <h4 style={{ textAlign: "right" }}>- {props.author}</h4>
       <div className={styles.divider}></div>
@@ -44,4 +42,4 @@ function Tweet(props) {
   );
 }
 
-export default Article;
+export default Tweet;

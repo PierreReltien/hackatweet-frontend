@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '../reducers/user';
 import styles from '../styles/Home.module.css';
 import Tweet from "./Tweet";
+import { useEffect } from 'react';
 
 function Home() {
 
@@ -26,8 +27,9 @@ function Home() {
     const [tweetsData, setTweetsData] = useState([]);
     const [lastTweet, setLastTweet] = useState({});
 
+    //faire la route coté back end pour récupérer tous les tweets de la BDD
     useEffect(() => {
-        fetch('http://localhost:3000/tweets')
+        fetch('http://localhost:3000/users/tweet')
           .then(response => response.json())
           .then(data => {
             setLastTweet(data.tweets[0]);
@@ -59,7 +61,7 @@ function Home() {
                             <button>Submit tweet</button>
                         </div>
                         <div className="tweetsContainer">
-                            {/* {Tweets} */}
+                            {/* {tweets} */}
                         </div>
                         <div></div>
                     </div>
