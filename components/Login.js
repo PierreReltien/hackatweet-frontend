@@ -10,19 +10,6 @@ import { Modal } from '@mui/material';
 import Home from './Home';
 
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
-
-
 function Login() {
 
 
@@ -56,6 +43,7 @@ function Login() {
     }).then(response => response.json())
       .then(data => {
         if (data.result) {
+          console.log(data.token)
           dispatch(login({ username: usernameSignIn, token: data.token }));
           setUsernameSignIn('');
           setPasswordSignIn('');
@@ -86,24 +74,24 @@ function Login() {
 
   return (
     <div>
-      <h1>Hackatweet</h1>
+      <h1>A cup of tea ?</h1>
       <div>
 
-        <Button onClick={handleOpenSignIn}>Sign In</Button>
+        <button className={styles.submitButton} onClick={handleOpenSignIn}>Sign In</button>
         <Modal
           open={openSignIn}
           onClose={handleCloseSignIn}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box className='box' sx={style}>
+          <Box className={styles.box}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Connexion
             </Typography>
 
               <div>
                 <label htmlFor="username">Username:</label>
-                <input
+                <input className={styles.submitInput}
                   type="text"
                   id="username"
                   value={usernameSignIn}
@@ -112,7 +100,7 @@ function Login() {
               </div>
               <div>
                 <label htmlFor="password">Password:</label>
-                <input
+                <input className={styles.submitInput}
                   type="password"
                   id="password"
                   value={passwordSignIn}
@@ -124,20 +112,20 @@ function Login() {
           </Box>
         </Modal>
 
-        <Button onClick={handleOpenSignUp}>Sign Up</Button>
+        <button className={styles.submitButton} onClick={handleOpenSignUp}>Sign Up</button>
         <Modal
           open={openSignUp}
           onClose={handleCloseSignUp}
           aria-labelledby="modal-modal-title"
           aria-describedby="modal-modal-description"
         >
-          <Box sx={style}>
+          <Box className={styles.box}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
               Inscription
             </Typography>
             <div>
                 <label htmlFor="firstname">firstname:</label>
-                <input
+                <input className={styles.submitInput}
                   type="text"
                   id="firstname"
                   value={firstname}
@@ -146,7 +134,7 @@ function Login() {
               </div>
               <div>
                 <label htmlFor="username">Username:</label>
-                <input
+                <input className={styles.submitInput}
                   type="text"
                   id="username"
                   value={usernameSignUp}
@@ -155,7 +143,7 @@ function Login() {
               </div>
               <div>
                 <label htmlFor="password">Password:</label>
-                <input
+                <input className={styles.submitInput}
                   type="password"
                   id="password"
                   value={passwordSignUp}

@@ -1,0 +1,15 @@
+.tweet {
+    border: 1px solid white;
+}
+
+.tweetContainer {
+
+}
+
+.tweetIcons {
+    display: flex;
+}
+
+.trash {
+    color : grey
+}

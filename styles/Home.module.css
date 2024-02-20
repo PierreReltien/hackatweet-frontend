@@ -1,3 +1,67 @@
 .sectionsContainer {
     display: flex;
 }
+
+
+.section1 {
+
+    border: 1px solid white; /* Ajoutez une bordure pour la clarté */
+    width: 20%; /* Chaque colonne occupe 1/3 de l'espace */
+}
+
+.section2 {
+
+    border: 1px solid white; /* Ajoutez une bordure pour la clarté */
+    width: 60%; /* Chaque colonne occupe 1/3 de l'espace */
+}
+
+.section3 {
+
+    border: 1px solid white; /* Ajoutez une bordure pour la clarté */
+    width: 20%; /* Chaque colonne occupe 1/3 de l'espace */
+}
+
+.img {
+    width: 100%; /* Image prendra 100% de la largeur du conteneur */
+    height: auto; /* Garantit que l'image conserve son ratio d'aspect */
+}
+
+.submitButton {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #D3806F ; /* Couleur de la bordure */
+    color: #fff; /* Couleur du texte */
+    background-color: #D3806F ; /* Couleur de fond */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Animation de transition */
+}
+
+.submitButton:hover {
+    background-color: #D3806F ; /* Changement de couleur defond au survol */
+    border-color: #D3806F ; /* Changement de couleur de la bordure au survol */
+}
+
+.submitButton:focus {
+    outline: none; /* Supprime la bordure de mise au point par défaut */
+    box-shadow: 0 0 0 3px rgba(97, 67, 21, 0.5); /* Effet de mise au point au clavier */
+}
+
+.submitInput {
+    width: 79%; /* Largeur de la barre d'entrée */
+    padding: 10px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de la police */
+    border: 2px solid #ccc; /* Couleur et épaisseur de la bordure */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #f4f4f4; /* Couleur de fond */
+    color: #333; /* Couleur du texte */
+    transition: border-color 0.3s; /* Animation de transition */
+}
+
+.submitInput:focus {
+    outline: none; /* Supprimer la bordure de mise au point par défaut */
+    border-color: #007bff; /* Couleur de la bordure lorsqu'elle est en focus */
+}
